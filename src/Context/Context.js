@@ -27,6 +27,21 @@ const Provider = ({ children }) => {
       payload: tab,
     });
   };
+
+  const getPlaylistId = (tab) => {
+    switch (tab) {
+      case "For You":
+        return 1;
+      case "Top Tracks":
+        return 2;
+      case "Favourites":
+        return 3;
+      case "Recently Played":
+        return 4;
+      default:
+        return 1;
+    }
+  };
   return (
     <Context.Provider
       value={{
@@ -35,6 +50,7 @@ const Provider = ({ children }) => {
         currentTab: appState.currentTab,
         setNav,
         setTab,
+        getPlaylistId,
       }}
     >
       {children}
