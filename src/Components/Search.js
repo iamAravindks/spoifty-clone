@@ -3,9 +3,10 @@ import { Context } from "../Context/Context";
 
 const Search = () => {
   const { currentTab } = useContext(Context);
+
   return (
     //   Problem here
-    <div className="w-full ">
+    <div className="w-full pl-4 fixed bg-inherit lg:max-w-[23%]  z-[1000]">
       <h1 className="text-4xl font-extrabold my-6 lg:my-4 ">{currentTab}</h1>
       <div class="relative min-w-full mt-5">
         <input

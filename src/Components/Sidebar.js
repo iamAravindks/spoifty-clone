@@ -49,7 +49,7 @@ const Sidebar = () => {
               className={`w-full duration-100 btn ${
                 !open && "scale-0"
               }  items-center justify-start rounded-md  my-4 p-2 ${
-                currentTab !== null &&
+                currentTab !== {} &&
                 nav.toLowerCase() === currentTab.toLowerCase()
                   ? "text-base"
                   : "text-opacity-50"

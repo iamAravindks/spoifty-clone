@@ -1,6 +1,6 @@
 import { createContext, useReducer } from "react";
 import ContextReducer from "./ContextReducer";
-import { SET_NAV, SET_TAB } from "./Types";
+import { SET_MUSIC, SET_NAV, SET_TAB } from "./Types";
 
 const initialState = {
   currentMusic: null,
@@ -42,15 +42,24 @@ const Provider = ({ children }) => {
         return 1;
     }
   };
+
+  const setMusics = (musics) => {
+    dispatch({
+      type: SET_MUSIC,
+      payload: musics,
+    });
+  };
   return (
     <Context.Provider
       value={{
         currentMusic: appState.currentMusic,
         NavList: appState.NavList,
         currentTab: appState.currentTab,
+        musics: appState.musics,
         setNav,
         setTab,
         getPlaylistId,
+        setMusics,
       }}
     >
       {children}

@@ -9,13 +9,11 @@ import "./index.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <Provider>
-      <ApolloProvider client={client}>
-        <App />
-      </ApolloProvider>
-    </Provider>
-  </React.StrictMode>
+  <Provider>
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
