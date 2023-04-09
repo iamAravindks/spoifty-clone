@@ -4,6 +4,15 @@ module.exports = {
   theme: {
     extend: {
       backgroundColor: {},
+      keyframes: {
+        rotate: {
+          from: { transform: "rotate(0deg)" },
+          to: { transform: "rotate(360deg)" },
+        },
+      },
+      animation: {
+        rotate: "rotate 3s linear infinite",
+      },
     },
   },
   plugins: [require("daisyui")],

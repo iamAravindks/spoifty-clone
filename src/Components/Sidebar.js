@@ -4,16 +4,16 @@ import Logo from "../assets/Logo.svg";
 import Profile from "../assets/profile.jpg";
 const Sidebar = () => {
   const { NavList, setTab, currentTab } = useContext(Context);
-  const [open, setOpen] = useState(window.innerWidth < 769 ? false : true);
+  const [open, setOpen] = useState(window.innerWidth < 991 ? false : true);
   const [position, setPosition] = useState(
-    window.innerWidth >= 769 ? "relative" : "absolute"
+    window.innerWidth >= 991 ? "relative" : "absolute"
   );
   const menuClickHandler = (tab) => {
     setTab(tab);
-    if (window.innerWidth < 769) setOpen(false);
+    if (window.innerWidth < 991) setOpen(false);
   };
   const onClickHandler = () => {
-    if (window.innerWidth < 769) {
+    if (window.innerWidth < 991) {
       setOpen((prev) => !prev);
       setPosition("absolute");
     } else setOpen(true);
@@ -21,7 +21,7 @@ const Sidebar = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 769) {
+      if (window.innerWidth >= 991) {
         setOpen(true);
         setPosition("relative");
       } else {
@@ -66,7 +66,7 @@ const Sidebar = () => {
           ))}
         </ul>
         <div
-          className="avatar cursor-pointer z-[999] absolute  left-2 bottom-7 md:left-6 md:bottom-12 w-auto h-auto"
+          className="avatar cursor-pointer z-[999] absolute  left-2 bottom-7 md:left-6 md:bottom-5 lg:left-6 lg:bottom-12 w-auto h-auto"
           onClick={onClickHandler}
         >
           <div className="w-7 md:w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">

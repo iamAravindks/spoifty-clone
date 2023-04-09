@@ -16,8 +16,8 @@ const PlayerLg = () => {
 
   const createAudioElement = useCallback(() => {
     const audio = new Audio(currentMusic?.url);
-    // setIsPlaying(true);
-    // audio.play();
+    setIsPlaying(true);
+    audio.play();
     audioElementRef.current = audio;
   }, [currentMusic]);
 
@@ -137,8 +137,25 @@ const PlayerLg = () => {
         <p className="text-white text-opacity-50">{formatTime(currentTime)}</p>
         <p className="text-white text-opacity-50">{formatTime(duration)}</p>
       </div>
+      <div className="flex flex-col items-center justify-center lg:hidden w-full gap-3 my-2">
+        <h2 className="w-full text-center font-bold text-xl">
+          {currentMusic?.title}
+        </h2>
+        <h3 className="w-full text-center text-white text-opacity-50">
+          {currentMusic?.artist}
+        </h3>
+      </div>
       <div className="flex w-full justify-between gap-6 text-2xl p-2">
         <div className="flex flex-2 w-full  justify-center gap-10 p-2 pl-4 ">
+          <div
+            className="avatar flex justify-center items-center 
+          animate-rotate lg:hidden
+          "
+          >
+            <div className="w-10 h-10 rounded-full ">
+              <img src={currentMusic?.photo} alt={currentMusic?.artist} />
+            </div>
+          </div>
           <button className="btn hover:bg-opacity-10" onClick={handlePrevSong}>
             <FaBackward />
           </button>
