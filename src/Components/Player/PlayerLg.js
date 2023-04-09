@@ -15,9 +15,9 @@ const PlayerLg = () => {
   const duration = currentMusic?.duration;
 
   const createAudioElement = useCallback(() => {
-    const audio = new Audio(currentMusic.url);
-    setIsPlaying(true);
-    audio.play();
+    const audio = new Audio(currentMusic?.url);
+    // setIsPlaying(true);
+    // audio.play();
     audioElementRef.current = audio;
   }, [currentMusic]);
 
@@ -68,7 +68,8 @@ const PlayerLg = () => {
 
     const progressRefCurrent = progressRef.current;
 
-    progressRefCurrent.addEventListener("change", handleSeekerChange);
+    if (progressRefCurrent)
+      progressRefCurrent.addEventListener("change", handleSeekerChange);
 
     audioElementRef.current.addEventListener(
       "timeupdate",
@@ -80,8 +81,8 @@ const PlayerLg = () => {
         "timeupdate",
         handleDurationChange
       );
-
-      progressRefCurrent.removeEventListener("change", handleSeekerChange);
+      if (progressRefCurrent)
+        progressRefCurrent?.removeEventListener("change", handleSeekerChange);
     };
   }, [currentMusic]);
 
@@ -120,7 +121,7 @@ const PlayerLg = () => {
   if (!currentMusic) return <></>;
 
   return (
-    <div className="w-full h-full flex flex-col justify-center items-center">
+    <div className=" w-full bg-base-200 h-full flex flex-col justify-center items-center  z-[1000]">
       <div className="w-full flex justify-center items-center p-3">
         <input
           type={"range"}
@@ -137,7 +138,7 @@ const PlayerLg = () => {
         <p className="text-white text-opacity-50">{formatTime(duration)}</p>
       </div>
       <div className="flex w-full justify-between gap-6 text-2xl p-2">
-        <div className="flex flex-2 w-full  justify-center gap-10 p-2">
+        <div className="flex flex-2 w-full  justify-center gap-10 p-2 pl-4 ">
           <button className="btn hover:bg-opacity-10" onClick={handlePrevSong}>
             <FaBackward />
           </button>

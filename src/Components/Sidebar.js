@@ -4,7 +4,7 @@ import Logo from "../assets/Logo.svg";
 import Profile from "../assets/profile.jpg";
 const Sidebar = () => {
   const { NavList, setTab, currentTab } = useContext(Context);
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(window.innerWidth < 769 ? false : true);
   const [position, setPosition] = useState(
     window.innerWidth >= 769 ? "relative" : "absolute"
   );
@@ -66,10 +66,10 @@ const Sidebar = () => {
           ))}
         </ul>
         <div
-          className="avatar cursor-pointer z-[999] absolute left-6 bottom-12"
+          className="avatar cursor-pointer z-[999] absolute  left-2 bottom-7 md:left-6 md:bottom-12 w-auto h-auto"
           onClick={onClickHandler}
         >
-          <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+          <div className="w-7 md:w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
             <img src={Profile} alt="Profile" />
           </div>
         </div>
