@@ -43,7 +43,11 @@ const Sidebar = () => {
           open ? "w-80" : "w-0"
         } ${position} min-h-screen  flex flex-col bg-base-300 z-[999] duration-300`}
       >
-        <ul className="flex flex-col pt-20 p-4 w-80   text-base-content z-[999]">
+        <ul
+          className={`${
+            open ? "flex" : "hidden"
+          } flex-col pt-20 p-4 w-80   text-base-content z-[999]`}
+        >
           {NavList?.map((nav, ind) => (
             <li
               key={ind}

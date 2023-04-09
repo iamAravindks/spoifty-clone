@@ -16,7 +16,7 @@ const MusicCard = ({ music }) => {
 
   return (
     <div
-      className={`w-full flex justify-start items-start p-4 relative overflow-scroll hover:bg-gray-800 ${
+      className={`w-full lg:max-w-[700px] flex justify-start items-start p-4 relative overflow-scroll hover:bg-gray-800 ${
         currentMusic?._id === _id && "bg-gray-800"
       } cursor-pointer`}
       onClick={() => setCurrentMusic(music)}

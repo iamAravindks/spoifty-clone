@@ -11,7 +11,7 @@ const Desktop = () => {
   const { _id, artist, duration, photo, title, url } = currentMusic;
 
   return (
-    <div className="hidden lg:flex flex-col p-5 w-full bg-inherit">
+    <div className="hidden lg:flex flex-col p-5 w-full bg-inherit duration-300">
       <div className="w-full flex flex-col flex-[1] justify-end p-5  gap-3">
         <h1 className="text-5xl font-extrabold">{title}</h1>
         <h3 className="text-2xl text-white text-opacity-50">{artist}</h3>

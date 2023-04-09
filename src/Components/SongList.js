@@ -8,7 +8,8 @@ import { Playlist } from "./Playlist/Playlist";
 import Search from "./Search";
 
 export const SongList = () => {
-  const { getPlaylistId, currentTab, setMusics } = useContext(Context);
+  const { getPlaylistId, currentTab, setMusics, currentMusic } =
+    useContext(Context);
   const [search, setSearch] = useState("");
   const [playlistId, setPlayListId] = useState(getPlaylistId(currentTab));
 
@@ -38,7 +39,11 @@ export const SongList = () => {
   }, [search]);
 
   return (
-    <div className="w-full relative lg:max-w-[25%] max-h-screen bg-base-200 p-5 pt-16 lg:pt-10 overflow-scroll">
+    <div
+      className={`w-full relative ${
+        currentMusic ? "lg:max-w-[25%]" : "w-full"
+      }  max-h-screen bg-base-200 p-5 pt-16 lg:pt-10 overflow-scroll duration-300`}
+    >
       <Search search={search} onChangeHandler={onChangeHandler} />
       <div className="mt-36">
         {loading && !data ? <PingLoader /> : <Playlist />}
