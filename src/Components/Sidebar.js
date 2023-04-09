@@ -44,8 +44,9 @@ const Sidebar = () => {
         } ${position} min-h-screen  flex flex-col bg-base-300 z-[999] duration-300`}
       >
         <ul className="flex flex-col pt-20 p-4 w-80   text-base-content z-[999]">
-          {NavList?.map((nav) => (
+          {NavList?.map((nav, ind) => (
             <li
+              key={ind}
               className={`w-full duration-100 btn ${
                 !open && "scale-0"
               }  items-center justify-start rounded-md  my-4 p-2 ${

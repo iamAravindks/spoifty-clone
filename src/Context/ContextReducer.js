@@ -22,6 +22,7 @@ const ContextReducer = (state, action) => {
       return {
         ...state,
         currentMusic: action.payload,
+        queue: state.musics,
       };
     default:
       return state;

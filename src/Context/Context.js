@@ -7,6 +7,7 @@ const initialState = {
   NavList: [],
   currentTab: null,
   musics: [],
+  queue: [],
 };
 
 export const Context = createContext(initialState);
@@ -63,6 +64,7 @@ const Provider = ({ children }) => {
         NavList: appState.NavList,
         currentTab: appState.currentTab,
         musics: appState.musics,
+        queue: appState.queue,
         setNav,
         setTab,
         getPlaylistId,

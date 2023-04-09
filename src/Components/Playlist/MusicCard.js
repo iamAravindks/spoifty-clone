@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import { HiOutlinePlay } from "react-icons/hi";
 import { Context } from "../../Context/Context";
 
 export const formatTime = (seconds) => {
@@ -11,8 +10,9 @@ export const formatTime = (seconds) => {
 };
 
 const MusicCard = ({ music }) => {
-  const { _id, artist, duration, photo, title, url } = music;
-  const { currentMusic, setCurrentMusic } = useContext(Context);
+  const { _id, artist, duration, photo, title } = music;
+  const { currentMusic, setCurrentMusic, currentTab, getPlaylistId } =
+    useContext(Context);
 
   return (
     <div
