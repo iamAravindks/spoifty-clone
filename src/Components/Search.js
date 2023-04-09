@@ -1,18 +1,33 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../Context/Context";
 
 const Search = () => {
-  const { currentTab } = useContext(Context);
+  const { currentTab, musics } = useContext(Context);
+  const [search, setSearch] = useState("");
 
+  const onChangeHandler = (e) => {
+    setSearch(e.target.value);
+  };
+
+  useEffect(() => {
+    const filterMusics = musics.filter(
+      (music) =>
+        music.title.toLowerCase().includes(search.toLowerCase()) ||
+        music.artist.toLowerCase().includes(search.toLowerCase())
+    );
+    console.log(filterMusics);
+  }, [search]);
   return (
     //   Problem here
-    <div className="w-full pl-4 fixed bg-inherit lg:max-w-[23%]  z-[1000]">
+    <div className="w-[90%]  pl-4 pb-3 fixed bg-inherit lg:max-w-[23%]  z-[800]">
       <h1 className="text-4xl font-extrabold my-6 lg:my-4 ">{currentTab}</h1>
       <div class="relative min-w-full mt-5">
         <input
           type="text"
-          class="min-w-full pl-4 pr-4 py-2 rounded-lg  bg-opacity-700  focus:outline-none "
+          class="min-w-full pl-4 pr-4 py-2 rounded-lg  bg-opacity-700  focus:outline-none shadow-lg"
           placeholder="Search Song, Artist"
+          value={search}
+          onChange={onChangeHandler}
         />
         <div class="absolute inset-y-0 right-0 flex items-center px-2">
           <svg

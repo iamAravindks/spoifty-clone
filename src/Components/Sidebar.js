@@ -35,7 +35,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className="inline-block m-6 mt-7 absolute z-[1000] ">
+      <div className="inline-block p-6 lg:p-0  h-20  w-full bg-base-200 lg:w-auto lg:m-6 lg:mt-7 absolute z-[1000] ">
         <img src={Logo} alt="logo" />
       </div>
       <div
