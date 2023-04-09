@@ -1,22 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Context } from "../Context/Context";
 
-const Search = () => {
-  const { currentTab, musics } = useContext(Context);
-  const [search, setSearch] = useState("");
+const Search = ({ search, onChangeHandler }) => {
+  const { currentTab } = useContext(Context);
 
-  const onChangeHandler = (e) => {
-    setSearch(e.target.value);
-  };
-
-  useEffect(() => {
-    const filterMusics = musics.filter(
-      (music) =>
-        music.title.toLowerCase().includes(search.toLowerCase()) ||
-        music.artist.toLowerCase().includes(search.toLowerCase())
-    );
-    console.log(filterMusics);
-  }, [search]);
   return (
     //   Problem here
     <div className="w-[90%]  pl-4 pb-3 fixed bg-inherit lg:max-w-[23%]  z-[800]">
@@ -25,7 +12,7 @@ const Search = () => {
         <input
           type="text"
           class="min-w-full pl-4 pr-4 py-2 rounded-lg  bg-opacity-700  focus:outline-none shadow-lg"
-          placeholder="Search Song, Artist"
+          placeholder="Search Song"
           value={search}
           onChange={onChangeHandler}
         />
