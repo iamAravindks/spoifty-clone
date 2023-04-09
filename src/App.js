@@ -1,6 +1,7 @@
 import { useQuery } from "@apollo/client";
 import React, { useContext, useEffect } from "react";
 import Loader from "./Components/Loader";
+import Desktop from "./Components/Player/Desktop";
 import Sidebar from "./Components/Sidebar";
 import { SongList } from "./Components/SongList";
 import { Context } from "./Context/Context";
@@ -32,6 +33,7 @@ const App = () => {
     <div className="max-h-screen overflow-hidden lg:flex ">
       <Sidebar />
       <SongList />
+      <Desktop />
     </div>
   );
 };

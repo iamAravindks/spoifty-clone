@@ -1,4 +1,4 @@
-import { SET_MUSIC, SET_NAV, SET_TAB } from "./Types";
+import { SET_CURRENT_MUSIC, SET_MUSIC, SET_NAV, SET_TAB } from "./Types";
 
 const ContextReducer = (state, action) => {
   switch (action.type) {
@@ -16,6 +16,12 @@ const ContextReducer = (state, action) => {
       return {
         ...state,
         musics: action.payload,
+      };
+
+    case SET_CURRENT_MUSIC:
+      return {
+        ...state,
+        currentMusic: action.payload,
       };
     default:
       return state;

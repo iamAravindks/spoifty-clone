@@ -38,7 +38,7 @@ export const SongList = () => {
   }, [search]);
 
   return (
-    <div className="w-full relative lg:w-1/4 max-h-screen bg-base-200 p-5 pt-16 lg:pt-10 overflow-scroll">
+    <div className="w-full relative lg:max-w-[25%] max-h-screen bg-base-200 p-5 pt-16 lg:pt-10 overflow-scroll">
       <Search search={search} onChangeHandler={onChangeHandler} />
       <div className="mt-36">
         {loading && !data ? <PingLoader /> : <Playlist />}
