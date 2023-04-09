@@ -7,7 +7,7 @@ import PingLoader from "./PingLoader";
 import { Playlist } from "./Playlist/Playlist";
 import Search from "./Search";
 
-export const SongList = () => {
+export const SongList = ({ onClickHandler }) => {
   const { getPlaylistId, currentTab, setMusics, currentMusic } =
     useContext(Context);
   const [search, setSearch] = useState("");
@@ -44,7 +44,11 @@ export const SongList = () => {
         currentMusic ? "lg:max-w-[25%]" : "w-full"
       }  max-h-screen bg-base-200 p-5 pt-16 lg:pt-10 overflow-scroll duration-300`}
     >
-      <Search search={search} onChangeHandler={onChangeHandler} />
+      <Search
+        search={search}
+        onChangeHandler={onChangeHandler}
+        onClickHandler={onClickHandler}
+      />
       <div className="mt-36">
         {loading && !data ? <PingLoader /> : <Playlist />}
       </div>

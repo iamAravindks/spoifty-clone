@@ -1,13 +1,34 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../Context/Context";
 
-const Search = ({ search, onChangeHandler }) => {
+const Search = ({ search, onChangeHandler, onClickHandler }) => {
   const { currentTab } = useContext(Context);
-
+  const [btn, setBtn] = useState(window.innerWidth > 991 ? "true" : "false");
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 991) {
+        setBtn(false);
+      } else {
+        setBtn(true);
+      }
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   return (
     //   Problem here
-    <div className="w-[90%]  pl-4 pb-3 fixed bg-inherit lg:max-w-[23%]  z-[800]">
-      <h1 className="text-4xl font-extrabold my-6 lg:my-4 ">{currentTab}</h1>
+    <div className="w-[90%] sm:w-[95%]  pl-4 pb-3 fixed bg-inherit lg:max-w-[23%]  z-[800]">
+      <div className="tooltip tooltip-right" data-tip="change category">
+        <h1
+          className={`${
+            btn ? "btn bg-black" : ""
+          } text-4xl font-extrabold my-6  lg:my-4 cursor-pointer lg:cursor-auto `}
+          onClick={onClickHandler}
+        >
+          {currentTab}
+        </h1>
+      </div>
       <div class="relative min-w-full mt-5">
         <input
           type="text"

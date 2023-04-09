@@ -1,37 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Context } from "../Context/Context";
 import Logo from "../assets/Logo.svg";
 import Profile from "../assets/profile.jpg";
-const Sidebar = () => {
-  const { NavList, setTab, currentTab } = useContext(Context);
-  const [open, setOpen] = useState(window.innerWidth < 991 ? false : true);
-  const [position, setPosition] = useState(
-    window.innerWidth >= 991 ? "relative" : "absolute"
-  );
-  const menuClickHandler = (tab) => {
-    setTab(tab);
-    if (window.innerWidth < 991) setOpen(false);
-  };
-  const onClickHandler = () => {
-    if (window.innerWidth < 991) {
-      setOpen((prev) => !prev);
-      setPosition("absolute");
-    } else setOpen(true);
-  };
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 991) {
-        setOpen(true);
-        setPosition("relative");
-      } else {
-        setPosition("absolute");
-      }
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+const Sidebar = ({ open, position, menuClickHandler, onClickHandler }) => {
+  const { NavList, currentTab } = useContext(Context);
 
   return (
     <>
@@ -66,11 +38,16 @@ const Sidebar = () => {
           ))}
         </ul>
         <div
-          className="avatar cursor-pointer z-[999] absolute  left-2 bottom-7 md:left-6 md:bottom-5 lg:left-6 lg:bottom-12 w-auto h-auto"
-          onClick={onClickHandler}
+          className="hidden lg:block tooltip tooltip-right absolute  left-5 bottom-20 sm:left-4 sm:bottom-7 md:left-6 md:bottom-5 lg:left-6 lg:bottom-12"
+          data-tip="open menu"
         >
-          <div className="w-7 md:w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-            <img src={Profile} alt="Profile" />
+          <div
+            className="avatar cursor-pointer z-[999]  w-auto h-auto"
+            onClick={onClickHandler}
+          >
+            <div className="w-7 md:w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+              <img src={Profile} alt="Profile" />
+            </div>
           </div>
         </div>
       </div>
